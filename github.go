@@ -38,7 +38,7 @@ func NewClient(token string) *Client {
 	return &Client{
 		httpClient: client.NewClient(
 			client.WithBaseUrl("https://api.github.com"),
-		).Debug(),
+		),
 		version: defaultVersion,
 		token:   token,
 	}
@@ -48,6 +48,11 @@ type Client struct {
 	httpClient *client.Client
 	version    string
 	token      string
+}
+
+func (c *Client) Debug() *Client {
+	c.httpClient.Debug()
+	return c
 }
 
 func (c *Client) GetToken() string {

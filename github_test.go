@@ -1,7 +1,6 @@
 package sdk
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -9,12 +8,28 @@ import (
 const token = ""
 
 func TestClient_StarredRepo(t *testing.T) {
-	c := NewClient(token)
+	t.Run("success", func(t *testing.T) {
+		t.Parallel()
 
-	resp, err := c.StarredRepo(
-		WithPerPage(1),
-	)
+		c := NewClient(token)
 
-	require.Nil(t, err)
-	fmt.Printf("%+v\n", resp)
+		resp, err := c.StarredRepo(
+			WithPerPage(1),
+		)
+
+		require.Nil(t, err)
+		require.Len(t, resp, 1)
+	})
+
+	t.Run("fail", func(t *testing.T) {
+		t.Parallel()
+
+		c := NewClient("")
+
+		_, err := c.StarredRepo(
+			WithPerPage(1),
+		)
+
+		require.NotNil(t, err)
+	})
 }
