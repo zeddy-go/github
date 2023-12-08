@@ -2,10 +2,16 @@ module github.com/zeddy-go/github
 
 go 1.21.4
 
-require github.com/zeddy-go/zeddy v0.0.0-20231207102509-94a1b80e0506
+require (
+	github.com/stretchr/testify v1.8.4
+	github.com/zeddy-go/zeddy v0.0.0-20231208084432-5062a1241f03
+)
 
 require (
+	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/gogf/gf/v2 v2.5.7 // indirect
+	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	go.opentelemetry.io/otel v1.14.0 // indirect
 	go.opentelemetry.io/otel/trace v1.14.0 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
